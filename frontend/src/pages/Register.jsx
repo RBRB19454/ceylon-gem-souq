@@ -48,7 +48,7 @@ export default function Register() {
             value={form.name}
             onChange={update('name')}
             required
-          />hange
+          />
         </div>
 
         <div className="form-group">

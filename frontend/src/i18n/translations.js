@@ -87,9 +87,9 @@ export const translations = {
     footer_rights: "All rights reserved.",
 
     // Listings
-    listings_eyebrow: "The Approved Collection",
-    listings_title: "Browse Natural Gemstones",
-    listings_subtitle: "Every listing below has been reviewed and approved by our administrators before going live.",
+    listings_eyebrow: "Curated Selection",
+    listings_title: "Explore Our Collection",
+    listings_subtitle: "Every gemstone below has been reviewed and approved by our administrators before going live.",
     listings_load_error: "Could not load listings. Please try again.",
     filters_heading: "Search Filters",
     results_count: "{count} gemstones found",
@@ -373,9 +373,9 @@ export const translations = {
     footer_rights: "جميع الحقوق محفوظة.",
 
     // Listings
-    listings_eyebrow: "المجموعة المعتمدة",
-    listings_title: "تصفح الأحجار الكريمة الطبيعية",
-    listings_subtitle: "تمت مراجعة كل معروض أدناه واعتماده من قبل مسؤولينا قبل نشره.",
+    listings_eyebrow: "مجموعة مُنتقاة",
+    listings_title: "استكشف مجموعتنا",
+    listings_subtitle: "تمت مراجعة كل حجر كريم أدناه واعتماده من قبل مسؤولينا قبل نشره.",
     listings_load_error: "تعذر تحميل المعروضات. يرجى المحاولة مرة أخرى.",
     filters_heading: "خيارات البحث",
     results_count: "تم العثور على {count} حجر كريم",

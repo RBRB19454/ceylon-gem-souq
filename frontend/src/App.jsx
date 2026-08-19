@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
@@ -21,9 +22,11 @@ export default function App() {
   const { settings } = useSettings();
   const location = useLocation();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
+    setMobileMenuOpen(false);
     navigate('/');
   };
 
@@ -37,33 +40,49 @@ export default function App() {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <header>
         <div className="header-container">
-          <Link to="/" className="logo-group">
+          <Link to="/" className="logo-group" onClick={() => setMobileMenuOpen(false)}>
             <img src={displayLogo} alt="Ceylon Gem Souq" className="logo-mark" />
             <span className="logo-divider" />
             <span className="logo-tagline">{t('hero_subtitle')}</span>
           </Link>
-          <nav className="nav-links">
+
+          {/* Hamburger Mobile Menu Toggle */}
+          <button 
+            className={`menu-toggle ${mobileMenuOpen ? 'open' : ''}`} 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+
+          <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
             <Link 
               to="/" 
               className={`nav-link ${isActive('/') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               {t('home')}
             </Link>
             <Link
               to="/about"
               className={`nav-link ${isActive('/about') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               {t('about')}
             </Link>
             <Link 
               to="/listings" 
               className={`nav-link ${isActive('/listings') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               {t('listings')}
             </Link>
             <Link
               to="/contact"
               className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
             >
               {t('contact')}
             </Link>
@@ -71,6 +90,7 @@ export default function App() {
               <Link 
                 to="/owner" 
                 className={`nav-link ${isActive('/owner') ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {t('my_dashboard')}
               </Link>
@@ -79,6 +99,7 @@ export default function App() {
               <Link 
                 to="/admin" 
                 className={`nav-link ${isActive('/admin') ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {t('admin')}
               </Link>
@@ -89,6 +110,7 @@ export default function App() {
                 <Link 
                   to="/login" 
                   className={`nav-link ${isActive('/login') ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {t('login')}
                 </Link>
@@ -96,6 +118,7 @@ export default function App() {
                   to="/register" 
                   className="btn btn-primary"
                   style={{ padding: '0.4rem 1rem', fontSize: '0.85rem' }}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {t('register')}
                 </Link>
@@ -110,7 +133,13 @@ export default function App() {
               </button>
             )}
             
-            <button onClick={toggleLanguage} className="btn-lang">
+            <button 
+              onClick={() => {
+                toggleLanguage();
+                setMobileMenuOpen(false);
+              }} 
+              className="btn-lang"
+            >
               {t('toggle_lang')}
             </button>
           </nav>

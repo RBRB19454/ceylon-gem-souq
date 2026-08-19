@@ -43,42 +43,42 @@ export default function Register() {
 
         <div className="form-group">
           <label className="form-label">{t('auth_name')}</label>
-          <input 
-            placeholder="John Doe" 
-            value={form.name} 
-            onChange={update('name')} 
-            required 
-          />
+          <input
+            placeholder="Enter your full name"
+            value={form.name}
+            onChange={update('name')}
+            required
+          />hange
         </div>
 
         <div className="form-group">
           <label className="form-label">{t('auth_email')}</label>
-          <input 
-            placeholder="john@example.com" 
-            type="email" 
-            value={form.email} 
-            onChange={update('email')} 
-            required 
+          <input
+            placeholder="email@example.com"
+            type="email"
+            value={form.email}
+            onChange={update('email')}
+            required
           />
         </div>
 
         <div className="form-group">
           <label className="form-label">{t('auth_password')}</label>
-          <input 
-            placeholder="******" 
-            type="password" 
-            value={form.password} 
-            onChange={update('password')} 
-            required 
+          <input
+            placeholder="******"
+            type="password"
+            value={form.password}
+            onChange={update('password')}
+            required
           />
         </div>
 
         <div className="form-group">
           <label className="form-label">{t('auth_phone')}</label>
-          <input 
-            placeholder="+94 77 123 4567" 
-            value={form.phone} 
-            onChange={update('phone')} 
+          <input
+            placeholder="+94 77 123 4567"
+            value={form.phone}
+            onChange={update('phone')}
           />
         </div>
 

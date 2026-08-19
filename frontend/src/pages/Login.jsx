@@ -40,23 +40,23 @@ export default function Login() {
 
         <div className="form-group">
           <label className="form-label">{t('auth_email')}</label>
-          <input 
-            placeholder="john@example.com" 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+          <input
+            placeholder="email@example.com"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
         <div className="form-group">
           <label className="form-label">{t('auth_password')}</label>
-          <input 
-            placeholder="******" 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+          <input
+            placeholder="******"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 

@@ -398,32 +398,54 @@ export default function Home() {
           <>
             <div className="featured-grid">
               {featured.map((l) => (
-                <Link to={`/listings/${l._id}`} key={l._id} className="card gem-card">
-                  <div className="gem-card-img-wrapper">
+                <Link to={`/listings/${l._id}`} key={l._id} className="luxury-gem-card" style={{ textDecoration: 'none' }}>
+                  <div className="luxury-gem-image-wrap" style={{ position: 'relative' }}>
                     {l.images && l.images[0] ? (
-                      <img src={l.images[0]} alt={l.title} className="gem-card-image" />
+                      <img src={l.images[0]} alt={l.title} />
                     ) : (
-                      <GemIllustration gemType={l.gemType} height={200} />
+                      <GemIllustration gemType={l.gemType} height={180} />
                     )}
                     {l.certification?.issuer && (
-                      <span className="gem-card-certified-badge">&#10003; {t('badge_certified')}</span>
+                      <span className="gold-ribbon-badge">
+                        {l.certification.issuer}
+                        <span>{t('badge_certified')}</span>
+                      </span>
                     )}
                   </div>
-                  <div style={{ padding: '1.25rem' }}>
-                    <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '1.05rem', color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
+
+                  <div style={{ padding: '0 0.5rem', width: '100%' }}>
+                    <h4 className="luxury-gem-title">
                       {l.title}
                     </h4>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-accent)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                      {t(`filter_${l.gemType}`)} &middot; {l.weightCt} ct
-                    </p>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                        ${l.priceUSD.toLocaleString()}
-                      </span>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-accent)' }}>
-                        {t('view_details')} &rarr;
-                      </span>
+
+                    <div className="card-specs-table">
+                      <div className="card-specs-row">
+                        <span className="card-specs-label">Type</span>
+                        <span className="card-specs-value">
+                          {t(`filter_${l.gemType}`)}
+                        </span>
+                      </div>
+                      <div className="card-specs-row">
+                        <span className="card-specs-label">Weight</span>
+                        <span className="card-specs-value">
+                          {l.weightCt} ct
+                        </span>
+                      </div>
+                      {l.origin && (
+                        <div className="card-specs-row">
+                          <span className="card-specs-label">Origin</span>
+                          <span className="card-specs-value">{l.origin}</span>
+                        </div>
+                      )}
                     </div>
+
+                    <div className="luxury-gem-price" style={{ marginBottom: '1.25rem' }}>
+                      ${l.priceUSD.toLocaleString()} USD
+                    </div>
+
+                    <span className="listing-view-btn" style={{ background: '#0b1e3d', color: 'white' }}>
+                      {t('view_details')}
+                    </span>
                   </div>
                 </Link>
               ))}

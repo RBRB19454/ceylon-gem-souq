@@ -1570,6 +1570,7 @@ input:checked + .slider-round:before {
   height: 48px; /* Fixed height for title alignment */
   overflow: hidden;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }

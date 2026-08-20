@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import PageHero from '../components/PageHero';
 
 export default function About() {
   const { t } = useLanguage();
@@ -12,16 +13,11 @@ export default function About() {
 
   return (
     <div>
-      {/* Intro */}
-      <section style={{ maxWidth: '760px', margin: '0 auto 4rem', textAlign: 'center' }}>
-        <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
-          {t('about_eyebrow')}
-        </span>
-        <h1 style={{ fontSize: '2.4rem', lineHeight: 1.2, marginBottom: '1.5rem' }}>
-          {t('about_title')}
-        </h1>
-        <p style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>{t('about_intro')}</p>
-      </section>
+      <PageHero
+        eyebrow={t('about_eyebrow')}
+        title={t('about_title')}
+        subtitle={t('about_intro')}
+      />
 
       {/* What we are / aren't */}
       <section

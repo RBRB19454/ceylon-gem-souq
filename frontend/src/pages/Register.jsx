@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useLanguage } from '../context/LanguageContext.jsx';
+import PageHero from '../components/PageHero';
 
 export default function Register() {
   const { register } = useAuth();
@@ -26,7 +27,13 @@ export default function Register() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem 0' }}>
+    <div>
+      <PageHero
+        eyebrow={t('auth_eyebrow') || 'Join Ceylon Gem Souq'}
+        title={t('auth_register_title')}
+        subtitle={t('hero_subtitle')}
+      />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '3rem 1rem' }}>
       <form onSubmit={handleSubmit} className="card" style={{ width: '100%', maxWidth: '440px' }}>
         <h2 style={{ textAlign: 'center', fontSize: '1.8rem', marginBottom: '0.5rem' }}>
           {t('auth_register_title')}
@@ -109,6 +116,7 @@ export default function Register() {
           </Link>
         </p>
       </form>
+      </div>
     </div>
   );
 }

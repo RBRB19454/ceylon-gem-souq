@@ -103,6 +103,27 @@ export default function Home() {
           backgroundImage: `linear-gradient(to right, rgba(11, 30, 61, 0.95) 0%, rgba(11, 30, 61, 0.75) 50%, rgba(11, 30, 61, 0.3) 100%), url(${lapisLazuliBg})` 
         }}
       >
+        <video
+          className="hero-video-bg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-video-overlay" aria-hidden="true" />
+        {/* Solid watermark blot-outs — each blends into the hero's dark overlay */}
+        <div className="hero-wm-cover hero-wm-cover--tl" aria-hidden="true" />
+        <div className="hero-wm-cover hero-wm-cover--tr" aria-hidden="true" />
+        <div className="hero-wm-cover hero-wm-cover--bl" aria-hidden="true" />
+        <div className="hero-wm-cover hero-wm-cover--br" aria-hidden="true" />
+        {/* Decorative gold corner frame ornaments sit on top as a design layer */}
+        <div className="hero-video-corner-mask hero-video-corner-mask--tl" aria-hidden="true" />
+        <div className="hero-video-corner-mask hero-video-corner-mask--tr" aria-hidden="true" />
+        <div className="hero-video-corner-mask hero-video-corner-mask--bl" aria-hidden="true" />
+        <div className="hero-video-corner-mask hero-video-corner-mask--br" aria-hidden="true" />
         <div className="hero-copy">
           <span className="eyebrow" style={{ color: '#C5A85C' }}>
             {language === 'en' ? 'Colombo \u21CC Doha \u00B7 Direct Trade' : 'كولومبو \u21CC الدوحة \u00B7 تجارة مباشرة'}

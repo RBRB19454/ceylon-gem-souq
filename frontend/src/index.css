@@ -107,16 +107,30 @@ a {
   transition: var(--transition);
 }
 
-/* Layout */
+/* Layout — Default: solid sticky header for all standard pages.
+   White nav text stays readable against the dark navy background. */
 header {
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: rgba(11, 30, 61, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--color-accent);
-  padding: 1rem 2rem;
-  box-shadow: var(--shadow-sm);
+  background: rgba(7, 20, 41, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(197, 168, 92, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  padding: 1.2rem 0;
+}
+
+/* Hero pages only: transparent absolute overlay so the hero
+   video/banner bleeds edge-to-edge beneath the nav */
+.page-home header,
+.page-listings header {
+  position: absolute;
+  background: linear-gradient(to bottom, rgba(7, 20, 41, 0.75) 0%, transparent 100%);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .header-container {
@@ -125,6 +139,9 @@ header {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logo-group {
@@ -158,9 +175,10 @@ header {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
   max-width: 130px;
   line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 [dir="rtl"] .logo-tagline {
@@ -171,21 +189,46 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
+  flex-wrap: nowrap;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   font-weight: 500;
   font-size: 0.95rem;
   padding: 0.25rem 0.5rem;
   position: relative;
+  /* Subtle dark shadow ensures text is readable even on transparent overlays */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-accent);
+  color: #C5A85C;
+  text-shadow: 0 0 12px rgba(197, 168, 92, 0.5);
 }
 
 .nav-link::after {
@@ -213,6 +256,8 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   min-height: calc(100vh - 200px);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 /* Interactive Elements */
@@ -395,16 +440,18 @@ textarea:focus {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 2rem;
-  padding: 4.5rem 3.5rem;
+  padding: 8.5rem 3.5rem 5.5rem;
   background:
     radial-gradient(ellipse at 15% 20%, rgba(212, 175, 55, 0.12), transparent 55%),
     linear-gradient(135deg, #0b1e3d 0%, #132a52 55%, #1e3a6a 100%);
   color: white;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero::before {
@@ -1153,13 +1200,11 @@ footer {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='gold1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23855a15' /%3E%3Cstop offset='50%25' stop-color='%23dca951' /%3E%3Cstop offset='100%25' stop-color='%23613f0b' /%3E%3C/linearGradient%3E%3ClinearGradient id='gold2' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23fcedc0' /%3E%3Cstop offset='50%25' stop-color='%23bfa054' /%3E%3Cstop offset='100%25' stop-color='%23785114' /%3E%3C/linearGradient%3E%3ClinearGradient id='gold3' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%239e7323' /%3E%3Cstop offset='50%25' stop-color='%23ffd580' /%3E%3Cstop offset='100%25' stop-color='%2380540d' /%3E%3C/linearGradient%3E%3Cfilter id='shadow' x='-10%25' y='-10%25' width='120%25' height='120%25'%3E%3CfeDropShadow dx='0' dy='5' stdDeviation='7' flood-color='%23000000' flood-opacity='0.4'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23gold1)' /%3E%3Cpath d='M0,280 Q300,180 600,280 T1200,280 L1200,400 L0,400 Z' fill='url(%23gold2)' filter='url(%23shadow)' /%3E%3Cpath d='M0,320 Q350,220 700,320 T1200,320 L1200,400 L0,400 Z' fill='url(%23gold3)' filter='url(%23shadow)' /%3E%3Cpath d='M300,0 C500,100 800,-50 1200,120 L1200,0 Z' fill='url(%23gold2)' filter='url(%23shadow)' /%3E%3Cpath d='M400,0 C650,150 900,-30 1200,180 L1200,0 Z' fill='url(%23gold3)' filter='url(%23shadow)' /%3E%3Cpath d='M-50,300 C200,220 500,280 800,380 C600,390 200,390 -50,380 Z' fill='url(%23gold3)' filter='url(%23shadow)' /%3E%3C/svg%3E");
   background-size: cover;
   background-position: center;
-  padding: 4.5rem 1.5rem 6.5rem;
+  padding: 8rem 1.5rem 6rem;
   text-align: center;
   position: relative;
-  margin-top: -3rem; /* Offset main padding */
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  width: 100vw;
+  margin-top: 0;
+  width: 100%;
   box-sizing: border-box;
   overflow: hidden;
   border-bottom: 2px solid #C5A85C;
@@ -1209,12 +1254,13 @@ footer {
   background: white;
   border-radius: 12px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
-  padding: 2.5rem;
-  margin-top: -3.5rem; /* Floating overlap */
+  padding: 2.5rem 1.5rem;
+  margin: -3.5rem auto 2.5rem; /* Floating overlap & centered alignment */
+  max-width: 1200px;
   position: relative;
   z-index: 10;
   border: 1px solid rgba(197, 168, 92, 0.15);
-  margin-bottom: 2.5rem;
+  box-sizing: border-box;
 }
 
 .collection-toolbar {
@@ -1677,4 +1723,421 @@ input:checked + .slider-round:before {
   transform: translateY(-5px);
   border-color: #C5A85C !important;
   box-shadow: 0 10px 25px rgba(11, 30, 61, 0.08), 0 0 0 4px #ffffff, 0 0 0 5px #C5A85C !important;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 30, 61, 0.94) 0%,
+    rgba(11, 30, 61, 0.85) 55%,
+    rgba(19, 42, 82, 0.8) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Solid watermark blot-out covers (z-index 1.5, between overlay and ornaments) ── */
+.hero-wm-cover {
+  position: absolute;
+  width: 240px;
+  height: 80px;
+  z-index: 2;
+  pointer-events: none;
+  /* Gradient that perfectly matches the hero-video-overlay dark navy colours */
+  background: linear-gradient(
+    to var(--fade-dir, right),
+    rgba(7, 20, 41, 0.98) 55%,
+    transparent 100%
+  );
+}
+
+.hero-wm-cover--tl { top: 0; left: 0; --fade-dir: right; border-radius: 0 0 16px 0; }
+.hero-wm-cover--tr { top: 0; right: 0; --fade-dir: left;  height: 80px; width: 240px; border-radius: 0 0 0 16px; }
+.hero-wm-cover--bl { bottom: 0; left: 0; --fade-dir: right; border-radius: 0 16px 0 0; }
+.hero-wm-cover--br { bottom: 0; right: 0; --fade-dir: left;  border-radius: 16px 0 0 0; }
+
+/* ── Decorative Gold Corner Frame Ornaments ─────────────────────────────────
+   These double as watermark covers AND a premium design element.
+   Each corner renders an L-shaped gold bracket with a dot accent,
+   giving the hero a luxury "framed" feel like a certificate or
+   gallery artwork. The transparent inner area shows the video clearly. */
+.hero-video-corner-mask {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 2;
+  pointer-events: none;
+  /* Transparent centre — only the border lines are visible */
+  background: transparent;
+}
+
+/* The two arms of the L-bracket */
+.hero-video-corner-mask::before,
+.hero-video-corner-mask::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(135deg, #C5A85C 0%, #f0d080 50%, #C5A85C 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(197, 168, 92, 0.5);
+}
+
+/* Horizontal arm */
+.hero-video-corner-mask::before {
+  width: 60px;
+  height: 3px;
+}
+
+/* Vertical arm */
+.hero-video-corner-mask::after {
+  width: 3px;
+  height: 60px;
+}
+
+/* ── Top-left corner ── */
+.hero-video-corner-mask--tl {
+  top: 20px;
+  left: 20px;
+}
+.hero-video-corner-mask--tl::before { top: 0; left: 0; }
+.hero-video-corner-mask--tl::after  { top: 0; left: 0; }
+
+/* ── Top-right corner ── */
+.hero-video-corner-mask--tr {
+  top: 20px;
+  right: 20px;
+}
+.hero-video-corner-mask--tr::before { top: 0; right: 0; left: auto; }
+.hero-video-corner-mask--tr::after  { top: 0; right: 0; left: auto; }
+
+/* ── Bottom-left corner ── */
+.hero-video-corner-mask--bl {
+  bottom: 20px;
+  left: 20px;
+}
+.hero-video-corner-mask--bl::before { bottom: 0; left: 0; top: auto; }
+.hero-video-corner-mask--bl::after  { bottom: 0; left: 0; top: auto; }
+
+/* ── Bottom-right corner ── */
+.hero-video-corner-mask--br {
+  bottom: 20px;
+  right: 20px;
+}
+.hero-video-corner-mask--br::before { bottom: 0; right: 0; left: auto; top: auto; }
+.hero-video-corner-mask--br::after  { bottom: 0; right: 0; left: auto; top: auto; }
+
+/* Gold dot at each corner junction */
+.hero-video-corner-mask--tl::before,
+.hero-video-corner-mask--tr::before,
+.hero-video-corner-mask--bl::before,
+.hero-video-corner-mask--br::before {
+  /* Add a small diamond dot at the corner junction using box-shadow */
+  box-shadow: 0 0 10px rgba(197, 168, 92, 0.6), 0 0 0 2px rgba(197, 168, 92, 0.25);
+}
+
+/* Subtle glow animation on the corner frames */
+@keyframes cornerGlow {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+.hero-video-corner-mask::before,
+.hero-video-corner-mask::after {
+  animation: cornerGlow 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-bg {
+    display: none;
+  }
+}
+
+/* Make sure real content stays above the new video layer regardless of
+   whatever z-index these already had */
+.hero-copy,
+.hero-gem-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* Page spacing overrides for transparent overlay navigation header */
+/* !important needed to win specificity over bare `main` rule */
+.page-home main,
+.page-listings main {
+  padding-top: 0 !important;
+  /* Remove side padding too — hero/listing-hero manage their own internal padding */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+.page-standard main {
+  padding-top: 7.5rem;
+}
+
+/* ── Mobile / Responsive nav ──────────────────────────── */
+@media (max-width: 900px) {
+  .page-standard main {
+    padding-top: 6rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 4rem;
+    text-align: center;
+  }
+
+  .listings-hero {
+    padding: 7rem 1.5rem 5rem;
+  }
+
+  /* Show hamburger, hide nav by default on mobile */
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(7, 20, 41, 0.97);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 99;
+    padding: 2rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Prevent hero grid image overflow on mobile */
+  .hero-gem-wrapper {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .logo-tagline {
+    display: none;
+  }
+
+  .logo-divider {
+    display: none;
+  }
+}
+
+/* Homepage non-hero section layout centering and constraints */
+.page-home .trust-bar,
+.page-home section:not(.hero) {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Collection container inside page-listings */
+.page-listings .collection-container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  max-width: calc(1200px);
+}
+
+@media (min-width: 901px) {
+  .page-listings .collection-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PageHero — consistent dark navy banner for all standard pages
+   with decorative gold corner ornaments matching the home hero
+   ═══════════════════════════════════════════════════════════════════ */
+.page-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(197, 168, 92, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(30, 58, 106, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #071429 0%, #0b1e3d 50%, #132a52 100%);
+  padding: 5.5rem 2rem 4rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  /* Subtle hexagon texture — same as the home hero */
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(197, 168, 92, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(30, 58, 106, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #071429 0%, #0b1e3d 50%, #132a52 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'%3E%3Cpolygon points='42,2 80,24 80,72 42,94 4,72 4,24' fill='none' stroke='%23E4C56B' stroke-opacity='0.07' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 84px 96px;
+  /* Gold bottom border */
+  border-bottom: 1px solid rgba(197, 168, 92, 0.3);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.page-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C5A85C;
+  margin-bottom: 1rem;
+}
+
+.page-hero-eyebrow::before,
+.page-hero-eyebrow::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #C5A85C);
+}
+
+.page-hero-eyebrow::after {
+  background: linear-gradient(to left, transparent, #C5A85C);
+}
+
+.page-hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.page-hero-title em {
+  color: #C5A85C;
+  font-style: normal;
+}
+
+.page-hero-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── Decorative gold corner ornaments (same L-bracket design as home hero) ── */
+.page-hero-corner {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page-hero-corner::before,
+.page-hero-corner::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(135deg, #C5A85C 0%, #f0d080 50%, #C5A85C 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(197, 168, 92, 0.45);
+  animation: cornerGlow 3s ease-in-out infinite;
+}
+
+/* Horizontal arm */
+.page-hero-corner::before {
+  width: 50px;
+  height: 2px;
+}
+
+/* Vertical arm */
+.page-hero-corner::after {
+  width: 2px;
+  height: 50px;
+}
+
+/* Top-left */
+.page-hero-corner--tl { top: 18px; left: 18px; }
+.page-hero-corner--tl::before { top: 0; left: 0; }
+.page-hero-corner--tl::after  { top: 0; left: 0; }
+
+/* Top-right */
+.page-hero-corner--tr { top: 18px; right: 18px; }
+.page-hero-corner--tr::before { top: 0; right: 0; left: auto; }
+.page-hero-corner--tr::after  { top: 0; right: 0; left: auto; }
+
+/* Bottom-left */
+.page-hero-corner--bl { bottom: 18px; left: 18px; }
+.page-hero-corner--bl::before { bottom: 0; left: 0; top: auto; }
+.page-hero-corner--bl::after  { bottom: 0; left: 0; top: auto; }
+
+/* Bottom-right */
+.page-hero-corner--br { bottom: 18px; right: 18px; }
+.page-hero-corner--br::before { bottom: 0; right: 0; left: auto; top: auto; }
+.page-hero-corner--br::after  { bottom: 0; right: 0; left: auto; top: auto; }
+
+/* Small center diamond ornament */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: #C5A85C;
+  box-shadow: 0 0 10px rgba(197, 168, 92, 0.8);
+  z-index: 4;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 4.5rem 1.5rem 3rem;
+  }
+
+  .page-hero-title {
+    font-size: 2rem;
+  }
+
+  .page-hero-corner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .page-hero-corner--tl { top: 14px; left: 14px; }
+  .page-hero-corner--tr { top: 14px; right: 14px; }
+  .page-hero-corner--bl { bottom: 14px; left: 14px; }
+  .page-hero-corner--br { bottom: 14px; right: 14px; }
 }

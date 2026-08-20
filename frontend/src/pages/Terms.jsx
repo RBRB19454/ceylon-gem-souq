@@ -1,5 +1,6 @@
 import { useSettings } from '../context/SettingsContext';
 import { useLanguage } from '../context/LanguageContext';
+import PageHero from '../components/PageHero';
 
 export default function Terms() {
   const { settings } = useSettings();
@@ -8,13 +9,11 @@ export default function Terms() {
 
   return (
     <div>
-      <section style={{ maxWidth: '760px', margin: '0 auto 2.5rem', textAlign: 'center' }}>
-        <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
-          {t('terms_eyebrow')}
-        </span>
-        <h1 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{t('terms_title')}</h1>
-        <p style={{ fontSize: '0.95rem' }}>{t('terms_last_updated')}</p>
-      </section>
+      <PageHero
+        eyebrow={t('terms_eyebrow')}
+        title={t('terms_title')}
+        subtitle={t('terms_last_updated')}
+      />
 
       {language === 'ar' && (
         <div

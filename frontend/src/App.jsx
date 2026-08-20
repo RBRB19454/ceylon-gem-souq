@@ -36,8 +36,14 @@ export default function App() {
   // via Site Settings, so the header is never broken/blank before setup.
   const displayLogo = settings?.logoUrl || logo;
 
+  const getPageClass = () => {
+    if (location.pathname === '/') return 'page-home';
+    if (location.pathname === '/listings') return 'page-listings';
+    return 'page-standard';
+  };
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className={getPageClass()} style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <header>
         <div className="header-container">
           <Link to="/" className="logo-group" onClick={() => setMobileMenuOpen(false)}>

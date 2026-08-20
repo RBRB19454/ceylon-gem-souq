@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useSettings } from '../context/SettingsContext';
+import PageHero from '../components/PageHero';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -77,13 +78,11 @@ export default function Contact() {
 
   return (
     <div>
-      <section style={{ maxWidth: '700px', margin: '0 auto 3rem', textAlign: 'center' }}>
-        <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
-          {t('contact_eyebrow')}
-        </span>
-        <h1 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{t('contact_title')}</h1>
-        <p style={{ fontSize: '1.05rem' }}>{t('contact_desc')}</p>
-      </section>
+      <PageHero
+        eyebrow={t('contact_eyebrow')}
+        title={t('contact_title')}
+        subtitle={t('contact_desc')}
+      />
 
       <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', marginBottom: '3.5rem' }}>
         {cards.map((c) => (

@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import PageHero from '../components/PageHero';
 
 export default function Certifications() {
   const { t } = useLanguage();
@@ -12,13 +13,11 @@ export default function Certifications() {
 
   return (
     <div>
-      <section style={{ maxWidth: '760px', margin: '0 auto 2.5rem', textAlign: 'center' }}>
-        <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
-          {t('certs_eyebrow')}
-        </span>
-        <h1 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{t('certs_title')}</h1>
-        <p style={{ fontSize: '1.05rem' }}>{t('certs_intro')}</p>
-      </section>
+      <PageHero
+        eyebrow={t('certs_eyebrow')}
+        title={t('certs_title')}
+        subtitle={t('certs_intro')}
+      />
 
       <section
         className="card"

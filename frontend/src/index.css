@@ -449,7 +449,7 @@ textarea:focus {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 2rem;
-  padding: 8.5rem 3.5rem 5.5rem;
+  padding: 11rem 3.5rem 6.5rem;
   background:
     radial-gradient(ellipse at 15% 20%, rgba(212, 175, 55, 0.12), transparent 55%),
     linear-gradient(135deg, #0b1e3d 0%, #132a52 55%, #1e3a6a 100%);
@@ -1903,7 +1903,7 @@ input:checked + .slider-round:before {
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 7rem 1.5rem 4rem;
+    padding: 9.5rem 1.5rem 5rem;
     text-align: center;
   }
 

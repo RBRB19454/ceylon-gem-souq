@@ -381,7 +381,7 @@ export default function Home() {
         </div>
 
         {featuredLoading ? (
-          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 360px))', justifyContent: 'center' }}>
+          <div className="featured-grid">
             {[1, 2, 3].map((i) => (
               <div key={i} className="skeleton" style={{ height: '320px', borderRadius: 'var(--radius-md)' }} />
             ))}
@@ -396,7 +396,7 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 360px))', justifyContent: 'center' }}>
+            <div className="featured-grid">
               {featured.map((l) => (
                 <Link to={`/listings/${l._id}`} key={l._id} className="card gem-card">
                   <div className="gem-card-img-wrapper">

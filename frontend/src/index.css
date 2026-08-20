@@ -432,6 +432,15 @@ textarea:focus {
   margin-top: 1.5rem;
 }
 
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
 /* Hero Section — asymmetric: copy on one side, a large faceted gem mark
    on the other. Background is a field of thin hexagon outlines (facets
    catching light) rather than a flat gradient. */

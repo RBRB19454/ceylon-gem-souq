@@ -378,7 +378,7 @@ export default function Home() {
       </section>
 
       {/* For Buyers / For Gem Owners Split Pathway */}
-      <section style={{ margin: '4rem 0' }}>
+      <section style={{ margin: '4rem auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
             {language === 'en' ? 'Choose Your Pathway' : 'اختر مسارك'}

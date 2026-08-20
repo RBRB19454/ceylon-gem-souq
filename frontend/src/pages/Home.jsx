@@ -284,93 +284,95 @@ export default function Home() {
 
       {/* Specialties Highlight */}
       <section className="home-specialties-section">
-        <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-          <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem', color: '#C5A85C' }}>
-            {language === 'en' ? 'The Island\'s Specialties' : 'مختصون بأحجار الجزيرة'}
-          </span>
-          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', color: 'white' }}>{t('specialties_title')}</h3>
-        </div>
-        <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem', color: '#a3b3cc' }}>
-          {t('specialties_desc')}
-        </p>
-
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 360px))', justifyContent: 'center' }}>
-          {/* Sapphires */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.sapphire}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_sapphire')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en' 
-                ? "The world-renowned Royal Blue and Cornflower Sapphires of Ceylon, famed for clarity and color saturation."
-                : "الياقوت الأزرق الملكي السيلاني المشهور عالمياً، المعروف بنقائه وشدة لمعانه."}
-            </p>
+        <div className="home-specialties-inner">
+          <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+            <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem', color: '#C5A85C' }}>
+              {language === 'en' ? 'The Island\'s Specialties' : 'مختصون بأحجار الجزيرة'}
+            </span>
+            <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', color: 'white' }}>{t('specialties_title')}</h3>
           </div>
+          <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem', color: '#a3b3cc' }}>
+            {t('specialties_desc')}
+          </p>
 
-          {/* Cat's Eye */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.catseye}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_catseye')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en'
-                ? "Chrysoberyl Cat's Eye with a sharp, prominent silvery slit of chatoyancy shimmering across the gem's dome."
-                : "حجر عين الهر ذو شق بريق فضي حاد يتحرك بمرونة على قمة سطح الحجر الأملس."}
-            </p>
-          </div>
+          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 360px))', justifyContent: 'center' }}>
+            {/* Sapphires */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.sapphire}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_sapphire')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en' 
+                  ? "The world-renowned Royal Blue and Cornflower Sapphires of Ceylon, famed for clarity and color saturation."
+                  : "الياقوت الأزرق الملكي السيلاني المشهور عالمياً، المعروف بنقائه وشدة لمعانه."}
+              </p>
+            </div>
 
-          {/* Moonstones */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.moonstone}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_moonstone')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en'
-                ? "High-grade translucent moonstones showing a mystical blue sheen, sourced from the mines of Meetiyagoda."
-                : "أحجار قمرية شفافة عالية الجودة تعكس وهجاً أزرقاً ساحراً، مستخرجة من مناجم ميتياغودا."}
-            </p>
-          </div>
+            {/* Cat's Eye */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.catseye}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_catseye')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en'
+                  ? "Chrysoberyl Cat's Eye with a sharp, prominent silvery slit of chatoyancy shimmering across the gem's dome."
+                  : "حجر عين الهر ذو شق بريق فضي حاد يتحرك بمرونة على قمة سطح الحجر الأملس."}
+              </p>
+            </div>
 
-          {/* Spinels */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.spinel}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_spinel')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en'
-                ? "Natural Sri Lankan spinels available in hot pink, ruby red, and purple shades, loved for high refractive index."
-                : "السبينيل السريلانكي الطبيعي المتوفر باللون الوردي الزاهي والأحمر والأرجواني، محبوب لمعامل انكساره العالي."}
-            </p>
-          </div>
+            {/* Moonstones */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.moonstone}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_moonstone')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en'
+                  ? "High-grade translucent moonstones showing a mystical blue sheen, sourced from the mines of Meetiyagoda."
+                  : "أحجار قمرية شفافة عالية الجودة تعكس وهجاً أزرقاً ساحراً، مستخرجة من مناجم ميتياغودا."}
+              </p>
+            </div>
 
-          {/* Alexandrites */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.alexandrite}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_alexandrite')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en'
-                ? "Extremely rare color-changing chrysoberyl, shifting from green in daylight to raspberry red in incandescent light."
-                : "ألكسندريت فائق الندرة يتغير لونه بالكامل من الأخضر نهاراً إلى الأخضر الداكن تحت الإضاءة الصناعية."}
-            </p>
-          </div>
+            {/* Spinels */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.spinel}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_spinel')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en'
+                  ? "Natural Sri Lankan spinels available in hot pink, ruby red, and purple shades, loved for high refractive index."
+                  : "السبينيل السريلانكي الطبيعي المتوفر باللون الوردي الزاهي والأحمر والأرجواني، محبوب لمعامل انكساره العالي."}
+              </p>
+            </div>
 
-          {/* Rubies */}
-          <div className="card luxury-specialty-card">
-            <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.ruby}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
-              {t('filter_ruby')}
-            </h4>
-            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
-              {language === 'en'
-                ? "Ceylon natural red rubies, rare and highly coveted, boasting delicate pinkish-red hues and fine brilliance."
-                : "الياقوت الأحمر السيلاني الطبيعي، نادر ومطلوب للغاية، يتميز بظلال حمراء وردية خفيفة وبريق رائع."}
-            </p>
+            {/* Alexandrites */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.alexandrite}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_alexandrite')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en'
+                  ? "Extremely rare color-changing chrysoberyl, shifting from green in daylight to raspberry red in incandescent light."
+                  : "ألكسندريت فائق الندرة يتغير لونه بالكامل من الأخضر نهاراً إلى الأخضر الداكن تحت الإضاءة الصناعية."}
+              </p>
+            </div>
+
+            {/* Rubies */}
+            <div className="card luxury-specialty-card">
+              <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.ruby}</div>
+              <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
+                {t('filter_ruby')}
+              </h4>
+              <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
+                {language === 'en'
+                  ? "Ceylon natural red rubies, rare and highly coveted, boasting delicate pinkish-red hues and fine brilliance."
+                  : "الياقوت الأحمر السيلاني الطبيعي، نادر ومطلوب للغاية، يتميز بظلال حمراء وردية خفيفة وبريق رائع."}
+              </p>
+            </div>
           </div>
         </div>
       </section>

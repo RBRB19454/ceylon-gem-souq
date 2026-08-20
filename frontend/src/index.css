@@ -1701,10 +1701,23 @@ input:checked + .slider-round:before {
 .home-specialties-section {
   background: #0B1E3D;
   background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04) 0%, transparent 80%);
-  padding: 4rem 2rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(197, 168, 92, 0.2);
+  padding: 4.5rem 0;
+  border-top: 1px solid rgba(197, 168, 92, 0.2);
+  border-bottom: 1px solid rgba(197, 168, 92, 0.2);
   margin-bottom: 4rem;
+  max-width: 100% !important;
+  width: 100%;
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.home-specialties-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .luxury-specialty-card {

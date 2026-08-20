@@ -4,7 +4,6 @@ import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/client';
 import { GemIllustration } from '../components/GemVisual';
-import lapisLazuliBg from '../assets/lapis_lazuli_bg.jpg';
 
 export default function Home() {
   const { t, language } = useLanguage();
@@ -97,12 +96,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section 
-        className="hero" 
-        style={{ 
-          backgroundImage: `linear-gradient(to right, rgba(11, 30, 61, 0.95) 0%, rgba(11, 30, 61, 0.75) 50%, rgba(11, 30, 61, 0.3) 100%), url(${lapisLazuliBg})` 
-        }}
-      >
+      <section className="hero">
         <video
           className="hero-video-bg"
           autoPlay

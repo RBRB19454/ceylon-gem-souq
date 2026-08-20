@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/client';
 import { GemIllustration } from '../components/GemVisual';
+import lapisLazuliBg from '../assets/lapis_lazuli_bg.jpg';
 
 export default function Home() {
   const { t, language } = useLanguage();
@@ -96,42 +97,67 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero" 
+        style={{ 
+          backgroundImage: `linear-gradient(to right, rgba(11, 30, 61, 0.95) 0%, rgba(11, 30, 61, 0.75) 50%, rgba(11, 30, 61, 0.3) 100%), url(${lapisLazuliBg})` 
+        }}
+      >
         <div className="hero-copy">
-          <span className="eyebrow">
+          <span className="eyebrow" style={{ color: '#C5A85C' }}>
             {language === 'en' ? 'Colombo \u21CC Doha \u00B7 Direct Trade' : 'كولومبو \u21CC الدوحة \u00B7 تجارة مباشرة'}
           </span>
           <h2>
             {language === 'en' ? (
-              <>Ceylon's finest gems, <em>cut for a direct trade</em></>
+              <>Ceylon's finest gems, <em style={{ color: '#C5A85C', fontStyle: 'normal' }}>cut for a direct trade</em></>
             ) : (
               t('hero_title')
             )}
           </h2>
-          <p>{t('hero_subtitle')}</p>
-          <p style={{ fontSize: '1rem', opacity: 0.85, maxWidth: '460px' }}>{t('hero_desc')}</p>
+          <p style={{ color: '#f1f5f9' }}>{t('hero_subtitle')}</p>
+          <p style={{ fontSize: '1rem', opacity: 0.85, maxWidth: '460px', color: '#cbd5e1' }}>{t('hero_desc')}</p>
 
           <div className="hero-actions">
-            <Link to="/listings" className="btn btn-primary">
+            <Link to="/listings" className="btn btn-primary" style={{ background: '#C5A85C', color: '#0b1e3d' }}>
               {t('browse_listings')}
             </Link>
             {!user && (
-              <Link to="/register" className="btn btn-outline" style={{ borderColor: 'var(--color-accent)', color: 'var(--color-accent)' }}>
+              <Link to="/register" className="btn btn-outline" style={{ borderColor: '#C5A85C', color: '#C5A85C' }}>
                 {t('hero_join_cta')}
               </Link>
             )}
           </div>
         </div>
 
-        <div className="hero-gem">
-          <svg viewBox="0 0 220 240" width="230" height="250" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.35))' }}>
-            <polygon points="110,8 205,58 205,182 110,232 15,182 15,58" fill="#0D47A1" />
-            <polygon points="110,8 110,232 15,58 205,58" fill="rgba(255,255,255,0.12)" />
-            <polygon points="110,55 168,90 168,150 110,185 52,150 52,90" fill="#1E88E5" />
-            <polygon points="110,8 110,55 205,58 168,90" fill="rgba(255,255,255,0.28)" />
-            <polygon points="15,182 52,150 110,232 110,185" fill="rgba(0,0,0,0.25)" />
-            <polygon points="110,90 140,110 140,150 110,170 80,150 80,110" fill="rgba(255,255,255,0.35)" />
+        <div className="hero-gem-wrapper">
+          {/* Overlapping Golden Geometric Triangles (Design Reference #4) */}
+          <svg className="gold-triangle-frame" viewBox="0 0 300 300">
+            <defs>
+              <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fcedc0" />
+                <stop offset="50%" stop-color="#C5A85C" />
+                <stop offset="100%" stop-color="#80540d" />
+              </linearGradient>
+            </defs>
+            <polygon points="150,20 280,250 20,250" fill="none" stroke="url(#gold-grad)" strokeWidth="2" opacity="0.8" />
+            <polygon points="150,280 20,50 280,50" fill="none" stroke="url(#gold-grad)" strokeWidth="1.2" opacity="0.5" />
+            <polygon points="150,80 230,220 70,220" fill="none" stroke="url(#gold-grad)" strokeWidth="0.8" opacity="0.3" />
+            <line x1="150" y1="20" x2="150" y2="280" stroke="url(#gold-grad)" strokeWidth="0.8" strokeDasharray="3" opacity="0.4" />
+            <circle cx="150" cy="20" r="4" fill="url(#gold-grad)" />
+            <circle cx="280" cy="250" r="4" fill="url(#gold-grad)" />
+            <circle cx="20" cy="250" r="4" fill="url(#gold-grad)" />
           </svg>
+
+          <div className="hero-gem">
+            <svg viewBox="0 0 220 240" width="230" height="250" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.55))' }}>
+              <polygon points="110,8 205,58 205,182 110,232 15,182 15,58" fill="#0D47A1" />
+              <polygon points="110,8 110,232 15,58 205,58" fill="rgba(255,255,255,0.12)" />
+              <polygon points="110,55 168,90 168,150 110,185 52,150 52,90" fill="#1E88E5" />
+              <polygon points="110,8 110,55 205,58 168,90" fill="rgba(255,255,255,0.28)" />
+              <polygon points="15,182 52,150 110,232 110,185" fill="rgba(0,0,0,0.25)" />
+              <polygon points="110,90 140,110 140,150 110,170 80,150 80,110" fill="rgba(255,255,255,0.35)" />
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -190,7 +216,7 @@ export default function Home() {
           <h3 style={{ fontSize: '2rem', marginTop: '0.5rem' }}>{t('trust_title')}</h3>
         </div>
         <div className="grid">
-          <div className="card" style={{ textAlign: 'center' }}>
+          <div className="card luxury-frame-card" style={{ textAlign: 'center' }}>
             <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(212, 175, 55, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -204,7 +230,7 @@ export default function Home() {
             </h4>
             <p style={{ fontSize: '0.95rem' }}>{t('trust_desc_1')}</p>
           </div>
-          <div className="card" style={{ textAlign: 'center' }}>
+          <div className="card luxury-frame-card" style={{ textAlign: 'center' }}>
             <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(212, 175, 55, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -219,7 +245,7 @@ export default function Home() {
             </h4>
             <p style={{ fontSize: '0.95rem' }}>{t('trust_desc_2')}</p>
           </div>
-          <div className="card" style={{ textAlign: 'center' }}>
+          <div className="card luxury-frame-card" style={{ textAlign: 'center' }}>
             <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(212, 175, 55, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -235,25 +261,25 @@ export default function Home() {
       </section>
 
       {/* Specialties Highlight */}
-      <section style={{ background: 'rgba(11,30,61,0.02)', padding: '3rem 2rem', borderRadius: 'var(--radius-lg)' }}>
+      <section className="home-specialties-section">
         <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-          <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
+          <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem', color: '#C5A85C' }}>
             {language === 'en' ? 'The Island\'s Specialties' : 'مختصون بأحجار الجزيرة'}
           </span>
-          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem' }}>{t('specialties_title')}</h3>
+          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', color: 'white' }}>{t('specialties_title')}</h3>
         </div>
-        <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem' }}>
+        <p style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem', color: '#a3b3cc' }}>
           {t('specialties_desc')}
         </p>
 
         <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
           {/* Sapphires */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.sapphire}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_sapphire')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en' 
                 ? "The world-renowned Royal Blue and Cornflower Sapphires of Ceylon, famed for clarity and color saturation."
                 : "الياقوت الأزرق الملكي السيلاني المشهور عالمياً، المعروف بنقائه وشدة لمعانه."}
@@ -261,12 +287,12 @@ export default function Home() {
           </div>
 
           {/* Cat's Eye */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.catseye}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_catseye')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en'
                 ? "Chrysoberyl Cat's Eye with a sharp, prominent silvery slit of chatoyancy shimmering across the gem's dome."
                 : "حجر عين الهر ذو شق بريق فضي حاد يتحرك بمرونة على قمة سطح الحجر الأملس."}
@@ -274,12 +300,12 @@ export default function Home() {
           </div>
 
           {/* Moonstones */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.moonstone}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_moonstone')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en'
                 ? "High-grade translucent moonstones showing a mystical blue sheen, sourced from the mines of Meetiyagoda."
                 : "أحجار قمرية شفافة عالية الجودة تعكس وهجاً أزرقاً ساحراً، مستخرجة من مناجم ميتياغودا."}
@@ -287,12 +313,12 @@ export default function Home() {
           </div>
 
           {/* Spinels */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.spinel}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_spinel')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en'
                 ? "Natural Sri Lankan spinels available in hot pink, ruby red, and purple shades, loved for high refractive index."
                 : "السبينيل السريلانكي الطبيعي المتوفر باللون الوردي الزاهي والأحمر والأرجواني، محبوب لمعامل انكساره العالي."}
@@ -300,25 +326,25 @@ export default function Home() {
           </div>
 
           {/* Alexandrites */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.alexandrite}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_alexandrite')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en'
                 ? "Extremely rare color-changing chrysoberyl, shifting from green in daylight to raspberry red in incandescent light."
-                : "ألكسندريت فائق الندرة يتغير لونه بالكامل من الأخضر نهاراً إلى الأحمر التوتي تحت الإضاءة الصناعية."}
+                : "ألكسندريت فائق الندرة يتغير لونه بالكامل من الأخضر نهاراً إلى الأخضر الداكن تحت الإضاءة الصناعية."}
             </p>
           </div>
 
           {/* Rubies */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+          <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.ruby}</div>
-            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem' }}>
+            <h4 style={{ fontFamily: 'var(--font-body)', fontWeight: '600', marginBottom: '0.5rem', color: '#C5A85C' }}>
               {t('filter_ruby')}
             </h4>
-            <p style={{ fontSize: '0.9rem' }}>
+            <p style={{ fontSize: '0.9rem', color: '#a3b3cc' }}>
               {language === 'en'
                 ? "Ceylon natural red rubies, rare and highly coveted, boasting delicate pinkish-red hues and fine brilliance."
                 : "الياقوت الأحمر السيلاني الطبيعي، نادر ومطلوب للغاية، يتميز بظلال حمراء وردية خفيفة وبريق رائع."}

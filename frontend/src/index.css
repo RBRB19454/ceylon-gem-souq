@@ -1711,15 +1711,27 @@ input:checked + .slider-round:before {
   background: #071429 !important;
   border: 1px solid rgba(197, 168, 92, 0.3) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .luxury-specialty-card::after {
   background: #C5A85C !important;
 }
 
+.luxury-specialty-card svg {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
 .luxury-specialty-card:hover {
   border-color: #C5A85C !important;
   box-shadow: 0 10px 30px rgba(197, 168, 92, 0.18) !important;
+}
+
+.luxury-specialty-card:hover svg {
+  transform: translateY(-6px) scale(1.08);
 }
 
 /* Golden frame paper texture card style (Design Reference #2) */
@@ -2150,4 +2162,166 @@ input:checked + .slider-round:before {
   .page-hero-corner--tr { top: 14px; right: 14px; }
   .page-hero-corner--bl { bottom: 14px; left: 14px; }
   .page-hero-corner--br { bottom: 14px; right: 14px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Ceylon Heritage Story & Buyer/Seller Split Layouts
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Heritage Story section split grid */
+.heritage-story-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  padding: 1rem 0;
+}
+
+.heritage-story-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: start;
+}
+
+[dir="rtl"] .heritage-story-text-container {
+  text-align: right;
+}
+
+.heritage-story-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0b1e3d;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+.heritage-story-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.heritage-visual-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: radial-gradient(circle at center, rgba(197, 168, 92, 0.08) 0%, transparent 70%);
+}
+
+.heritage-graphic-wrapper {
+  position: relative;
+  border: 1px solid rgba(197, 168, 92, 0.35);
+  box-shadow: var(--shadow-lg);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1.15;
+  background: linear-gradient(135deg, #071429 0%, #0b1e3d 100%);
+}
+
+.heritage-graphic-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'%3E%3Cpolygon points='42,2 80,24 80,72 42,94 4,72 4,24' fill='none' stroke='%23E4C56B' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 84px 96px;
+}
+
+/* For Buyers / For Owners split section */
+.role-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.role-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 3.5rem 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.005);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.role-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(197, 168, 92, 0.45);
+  box-shadow: 0 15px 35px rgba(11, 30, 61, 0.08), 0 0 0 2px rgba(197, 168, 92, 0.15);
+}
+
+.role-card-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: #C5A85C;
+  transition: transform 0.3s ease;
+}
+
+.role-card:hover .role-card-icon-wrap {
+  transform: scale(1.1);
+}
+
+.role-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0b1e3d;
+  margin: 0 0 0.85rem;
+}
+
+.role-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0 0 2rem;
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .heritage-story-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+  .heritage-story-text-container {
+    text-align: center !important;
+  }
+  .heritage-story-heading {
+    font-size: 2rem;
+  }
+  .role-split-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .role-card {
+    padding: 2.5rem 1.75rem;
+  }
 }

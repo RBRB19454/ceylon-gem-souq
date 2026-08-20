@@ -1,43 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
-import api from '../api/client';
-import { GemIllustration } from '../components/GemVisual';
 
 export default function Home() {
   const { t, language } = useLanguage();
   const { user } = useAuth();
-
-  const [featured, setFeatured] = useState([]);
-  const [featuredLoading, setFeaturedLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    api
-      .get('/listings')
-      .then(({ data }) => {
-        if (cancelled) return;
-        // Certified listings first (stronger trust signal), then newest —
-        // these are real, live approved listings, not placeholder content.
-        const sorted = [...data].sort((a, b) => {
-          const aCert = a.certification?.issuer ? 1 : 0;
-          const bCert = b.certification?.issuer ? 1 : 0;
-          if (aCert !== bCert) return bCert - aCert;
-          return new Date(b.createdAt) - new Date(a.createdAt);
-        });
-        setFeatured(sorted.slice(0, 3));
-      })
-      .catch(() => {
-        if (!cancelled) setFeatured([]);
-      })
-      .finally(() => {
-        if (!cancelled) setFeaturedLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   // SVG representation of gemstones for visual excellence
   const gemSVGs = {
@@ -222,6 +189,46 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Ceylon Heritage Story */}
+      <section className="heritage-story-layout">
+        <div className="heritage-story-text-container">
+          <span className="eyebrow" style={{ color: '#C5A85C', marginBottom: '0.5rem' }}>
+            {language === 'en' ? '2500 Years of Gem Mining History' : '٢٥٠٠ عام من تاريخ تعدين الأحجار الكريمة'}
+          </span>
+          <h3 className="heritage-story-heading">
+            {language === 'en' ? 'Ceylon\'s Golden Heritage & Serendib Sovereignty' : 'تراث سيلان الذهبي وسيادة سرنديب العريقة'}
+          </h3>
+          <p className="heritage-story-paragraph">
+            {language === 'en'
+              ? "For over two millennia, the island of Sri Lanka—known historically as Serendib and Ceylon—has been celebrated as the 'Treasure Box of the Indian Ocean'. Sourced from the rich alluvial soils of Ratnapura, our precious blue sapphires, rubies, and spinels have adorned the crowns of global royalty, from King Solomon to the modern British Royal Family."
+              : "لأكثر من ألفي عام، عُرفت جزيرة سريلانكا - المعروفة تاريخياً باسم سرنديب وسيلان - باسم 'صندوق الكنوز في المحيط الهندي'. تم استخراج الياقوت الأزرق الثمين والياقوت والسبينيل من التربة الغنية بالغرين في راتنابورا، لتزين تيجان الملوك والأباطرة عبر التاريخ."}
+          </p>
+          <p className="heritage-story-paragraph" style={{ margin: 0 }}>
+            {language === 'en'
+              ? "Ceylon Gem Souq honors this ancient heritage by connecting local Sri Lankan mine owners directly with discerning buyers in the Middle East. By stripping away layers of unnecessary middle agencies, we protect the livelihoods of artisanal miners while guaranteeing authentic, laboratory-certified gemstones of unparalleled brilliance."
+              : "يكرم سوق أحجار سيلان الكريمة هذا الإرث العتيق من خلال ربط أصحاب المناجم المحليين في سريلانكا بمشترين في الشرق الأوسط بشكل مباشر. من خلال إلغاء الوسطاء، نحمي سبل عيش عمال المناجم الحرفيين ونضمن أحجارًا كريمة أصلية ومعتمدة."}
+          </p>
+        </div>
+        
+        <div className="heritage-visual-container">
+          <div className="heritage-graphic-wrapper">
+            <svg viewBox="0 0 200 200" width="160" height="160" style={{ filter: 'drop-shadow(0 15px 25px rgba(197, 168, 92, 0.25))' }}>
+              <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(197, 168, 92, 0.12)" strokeWidth="1" strokeDasharray="4 6" />
+              <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(197, 168, 92, 0.25)" strokeWidth="1.5" />
+              <polygon points="100,20 150,55 150,145 100,180 50,145 50,55" fill="none" stroke="#C5A85C" strokeWidth="2" />
+              <polygon points="100,50 130,70 130,130 100,150 70,130 70,70" fill="none" stroke="rgba(197, 168, 92, 0.5)" strokeWidth="1.5" />
+              <line x1="100" y1="20" x2="100" y2="50" stroke="#C5A85C" strokeWidth="1.5" />
+              <line x1="150" y1="55" x2="130" y2="70" stroke="#C5A85C" strokeWidth="1.5" />
+              <line x1="150" y1="145" x2="130" y2="130" stroke="#C5A85C" strokeWidth="1.5" />
+              <line x1="100" y1="180" x2="100" y2="150" stroke="#C5A85C" strokeWidth="1.5" />
+              <line x1="50" y1="145" x2="70" y2="130" stroke="#C5A85C" strokeWidth="1.5" />
+              <line x1="50" y1="55" x2="70" y2="70" stroke="#C5A85C" strokeWidth="1.5" />
+              <polygon points="100,70 120,85 120,115 100,130 80,115 80,85" fill="rgba(197, 168, 92, 0.08)" stroke="#C5A85C" strokeWidth="1.5" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
       {/* Trust Factors */}
       <section style={{ marginBottom: '4rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
@@ -287,7 +294,7 @@ export default function Home() {
           {t('specialties_desc')}
         </p>
 
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 360px))', justifyContent: 'center' }}>
           {/* Sapphires */}
           <div className="card luxury-specialty-card">
             <div style={{ marginBottom: '1.5rem' }}>{gemSVGs.sapphire}</div>
@@ -368,96 +375,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Gemstones — real, live listings, not placeholder content */}
+      {/* For Buyers / For Gem Owners Split Pathway */}
       <section style={{ margin: '4rem 0' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
-            {t('featured_eyebrow')}
+            {language === 'en' ? 'Choose Your Pathway' : 'اختر مسارك'}
           </span>
-          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', marginBottom: '0.75rem' }}>
-            {t('featured_title')}
+          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem' }}>
+            {language === 'en' ? 'Direct Trade Gateways' : 'بوابات التجارة المباشرة'}
           </h3>
-          <p style={{ maxWidth: '560px', margin: '0 auto' }}>{t('featured_subtitle')}</p>
         </div>
-
-        {featuredLoading ? (
-          <div className="featured-grid">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="skeleton" style={{ height: '320px', borderRadius: 'var(--radius-md)' }} />
-            ))}
-          </div>
-        ) : featured.length === 0 ? (
-          <div className="card" style={{ maxWidth: '560px', margin: '0 auto', padding: '2.5rem', textAlign: 'center' }}>
-            <h4 style={{ marginBottom: '0.75rem' }}>{t('featured_empty_title')}</h4>
-            <p style={{ marginBottom: '1.5rem' }}>{t('featured_empty_desc')}</p>
-            <Link to="/listings" className="btn btn-outline">
-              {t('featured_view_all')}
+        
+        <div className="role-split-grid">
+          {/* Card 1: For Buyers */}
+          <div className="role-card">
+            <div className="role-card-icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </div>
+            <h4 className="role-card-title">
+              {language === 'en' ? 'For Discerning Buyers' : 'للمشترين وهواة الاقتناء'}
+            </h4>
+            <p className="role-card-desc">
+              {language === 'en'
+                ? "Browse verified, lab-certified Ceylon sapphires, rubies, and alexandrites directly from the source. Coordinate secure payments and logistics with full trade protection."
+                : "تصفح الياقوت السيلاني والسبينيل المعتمد والموثق مخبرياً مباشرة من المصدر. نسق المدفوعات والخدمات اللوجستية الآمنة مع حماية كاملة للتجارة."}
+            </p>
+            <Link to="/listings" className="btn btn-outline" style={{ borderColor: '#C5A85C', color: '#C5A85C' }}>
+              {language === 'en' ? 'Explore the Collection' : 'استكشف المجموعة'}
             </Link>
           </div>
-        ) : (
-          <>
-            <div className="featured-grid">
-              {featured.map((l) => (
-                <Link to={`/listings/${l._id}`} key={l._id} className="luxury-gem-card" style={{ textDecoration: 'none' }}>
-                  <div className="luxury-gem-image-wrap" style={{ position: 'relative' }}>
-                    {l.images && l.images[0] ? (
-                      <img src={l.images[0]} alt={l.title} />
-                    ) : (
-                      <GemIllustration gemType={l.gemType} height={180} />
-                    )}
-                    {l.certification?.issuer && (
-                      <span className="gold-ribbon-badge">
-                        {l.certification.issuer}
-                        <span>{t('badge_certified')}</span>
-                      </span>
-                    )}
-                  </div>
 
-                  <div style={{ padding: '0 0.5rem', width: '100%' }}>
-                    <h4 className="luxury-gem-title">
-                      {l.title}
-                    </h4>
-
-                    <div className="card-specs-table">
-                      <div className="card-specs-row">
-                        <span className="card-specs-label">Type</span>
-                        <span className="card-specs-value">
-                          {t(`filter_${l.gemType}`)}
-                        </span>
-                      </div>
-                      <div className="card-specs-row">
-                        <span className="card-specs-label">Weight</span>
-                        <span className="card-specs-value">
-                          {l.weightCt} ct
-                        </span>
-                      </div>
-                      {l.origin && (
-                        <div className="card-specs-row">
-                          <span className="card-specs-label">Origin</span>
-                          <span className="card-specs-value">{l.origin}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="luxury-gem-price" style={{ marginBottom: '1.25rem' }}>
-                      ${l.priceUSD.toLocaleString()} USD
-                    </div>
-
-                    <span className="listing-view-btn" style={{ background: '#0b1e3d', color: 'white' }}>
-                      {t('view_details')}
-                    </span>
-                  </div>
-                </Link>
-              ))}
+          {/* Card 2: For Owners */}
+          <div className="role-card">
+            <div className="role-card-icon-wrap">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-              <Link to="/listings" className="btn btn-outline">
-                {t('featured_view_all')}
-              </Link>
-            </div>
-          </>
-        )}
+            <h4 className="role-card-title">
+              {language === 'en' ? 'For Gem & Mine Owners' : 'لأصحاب الأحجار والمناجم'}
+            </h4>
+            <p className="role-card-desc">
+              {language === 'en'
+                ? "List your rough or cut inventory, showcase official laboratory reports, and sell directly to high-net-worth buyers in Doha and across the Middle East."
+                : "اعرض مخزونك من الأحجار المصقولة أو الخام، واعرض تقارير المختبرات الرسمية، وبع مباشرة للمشترين ذوي الملاءة المالية في الدوحة والشرق الأوسط."}
+            </p>
+            <Link to="/register?role=owner" className="btn btn-secondary" style={{ background: '#0b1e3d', color: 'white', border: 'none' }}>
+              {language === 'en' ? 'Register as Seller' : 'سجل كبائع'}
+            </Link>
+          </div>
+        </div>
       </section>
+
+
     </div>
   );
 }

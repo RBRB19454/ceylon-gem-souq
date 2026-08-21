@@ -1,10 +1,47 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
+import { GemIllustration } from '../components/GemVisual';
 
 export default function Home() {
   const { t, language } = useLanguage();
   const { user } = useAuth();
+
+  const featuredMockGems = [
+    {
+      _id: 'mock-1',
+      title: '5.42ct Royal Blue Sapphire',
+      gemType: 'sapphire',
+      shape: 'cushion',
+      color: 'Royal Blue',
+      origin: 'Sri Lanka (Ratnapura)',
+      priceUSD: 14800,
+      weightCt: 5.42,
+      certification: { issuer: 'GRS', reportNumber: 'GRS2026-081242' }
+    },
+    {
+      _id: 'mock-2',
+      title: '3.15ct Padparadscha Sapphire',
+      gemType: 'sapphire',
+      shape: 'oval',
+      color: 'Sunset Pinkish-Orange',
+      origin: 'Sri Lanka (Elahera)',
+      priceUSD: 24500,
+      weightCt: 3.15,
+      certification: { issuer: 'GIA', reportNumber: 'GIA642819324' }
+    },
+    {
+      _id: 'mock-3',
+      title: '1.89ct Color-Changing Alexandrite',
+      gemType: 'alexandrite',
+      shape: 'oval',
+      color: 'Green to Raspberry Red',
+      origin: 'Sri Lanka',
+      priceUSD: 19200,
+      weightCt: 1.89,
+      certification: { issuer: 'SSEF', reportNumber: 'SSEF-94182' }
+    }
+  ];
 
   // SVG representation of gemstones for visual excellence
   const gemSVGs = {
@@ -454,7 +491,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured Gemstones — populated with high-end mock listings to show a complete marketplace */}
+      <section style={{ margin: '4rem 0' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
+            {t('featured_eyebrow')}
+          </span>
+          <h3 style={{ fontSize: '2rem', marginTop: '0.5rem', marginBottom: '0.75rem' }}>
+            {t('featured_title')}
+          </h3>
+          <p style={{ maxWidth: '560px', margin: '0 auto' }}>{t('featured_subtitle')}</p>
+        </div>
 
+        <div className="featured-grid">
+          {featuredMockGems.map((l) => (
+            <Link to={`/listings/${l._id}`} key={l._id} className="luxury-gem-card" style={{ textDecoration: 'none' }}>
+              <div className="luxury-gem-image-wrap" style={{ position: 'relative' }}>
+                <GemIllustration gemType={l.gemType} height={180} />
+                {l.certification?.issuer && (
+                  <span className="gold-ribbon-badge">
+                    {l.certification.issuer}
+                    <span>{t('badge_certified')}</span>
+                  </span>
+                )}
+              </div>
+
+              <div style={{ padding: '0 0.5rem', width: '100%' }}>
+                <h4 className="luxury-gem-title">
+                  {l.title}
+                </h4>
+
+                <div className="card-specs-table">
+                  <div className="card-specs-row">
+                    <span className="card-specs-label">Type</span>
+                    <span className="card-specs-value">
+                      {t(`filter_${l.gemType}`)}
+                    </span>
+                  </div>
+                  <div className="card-specs-row">
+                    <span className="card-specs-label">Weight</span>
+                    <span className="card-specs-value">
+                      {l.weightCt} ct
+                    </span>
+                  </div>
+                  {l.origin && (
+                    <div className="card-specs-row">
+                      <span className="card-specs-label">Origin</span>
+                      <span className="card-specs-value">{l.origin}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="luxury-gem-price" style={{ marginBottom: '1.25rem' }}>
+                  ${l.priceUSD.toLocaleString()} USD
+                </div>
+
+                <span className="listing-view-btn" style={{ background: '#0b1e3d', color: 'white' }}>
+                  {t('view_details')}
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+          <Link to="/listings" className="btn btn-outline">
+            {t('featured_view_all')}
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

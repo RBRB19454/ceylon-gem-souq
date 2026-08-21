@@ -72,9 +72,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/auth/login
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  console.log('DEBUG LOGIN:', { email, passwordLength: password ? password.length : 0 });
   const user = await User.findOne({ email: String(email).toLowerCase().trim() });
-  console.log('DEBUG USER FOUND:', user ? { email: user.email, role: user.role } : 'NOT_FOUND');
 
   if (user && (await user.matchPassword(password))) {
     res.json({

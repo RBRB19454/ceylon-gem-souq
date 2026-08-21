@@ -678,12 +678,14 @@ footer {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
+  padding: 0 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2.5rem;
   margin-bottom: 2rem;
+  box-sizing: border-box;
 }
 
 .footer-logo {
@@ -817,16 +819,17 @@ footer {
 }
 
 .footer-bottom {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.5rem;
+  padding: 1.5rem 4rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
   flex-wrap: wrap;
   gap: 1rem;
+  box-sizing: border-box;
 }
 
 /* Toast Message */
@@ -2336,5 +2339,24 @@ input:checked + .slider-round:before {
   }
   .role-card {
     padding: 2.5rem 1.75rem;
+  }
+  .footer-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .footer-bottom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .footer-bottom {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

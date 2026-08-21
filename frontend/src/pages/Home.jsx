@@ -189,6 +189,25 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Certification-lab trust strip — same 4 real, informational
+          references as the Certifications page, kept in sync via the
+          shared certs_lab_*_desc translation keys rather than duplicated
+          copy that could drift out of accuracy over time. */}
+      <div className="home-certs-strip">
+        <p className="home-certs-strip-title">{t('home_certs_strip_title')}</p>
+        <div className="home-certs-strip-row">
+          {['gia', 'grs', 'ssef', 'ngja'].map((lab) => (
+            <span key={lab} className="home-certs-strip-item">
+              {lab.toUpperCase()}
+              <span className="tooltip">{t(`certs_lab_${lab}_desc`)}</span>
+            </span>
+          ))}
+        </div>
+        <Link to="/certifications" className="home-certs-strip-cta">
+          {t('home_certs_strip_link')} &rarr;
+        </Link>
+      </div>
+
       {/* Ceylon Heritage Story */}
       <section className="heritage-story-layout">
         <div className="heritage-story-text-container">

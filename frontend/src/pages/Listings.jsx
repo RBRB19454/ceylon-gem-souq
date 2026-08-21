@@ -138,6 +138,33 @@ export default function Listings() {
     { key: 'marquise', label: 'Marquise', svg: <path d="M12,4 C15,9 15,15 12,20 C9,15 9,9 12,4 Z" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
     { key: 'pear', label: 'Pear', svg: <path d="M12,4 C12,4 18,12 15,18 C12,21 12,21 9,18 C6,12 12,4 12,4 Z" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
     { key: 'princess', label: 'Princess', svg: <rect x="5" y="5" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
+    {
+      key: 'cabochon',
+      label: 'Cabochon',
+      // Smooth polished dome, no facet lines — the cut used for Cat's Eye,
+      // Moonstone, and Star Sapphires, none of which are faceted stones.
+      svg: (
+        <g fill="none" stroke="currentColor" strokeWidth="1.5">
+          <ellipse cx="12" cy="13" rx="8" ry="6" />
+          <path d="M6.5 10a6.5 4 0 0 1 11 0" strokeWidth="1" />
+        </g>
+      ),
+    },
+    {
+      key: 'star',
+      label: 'Star',
+      // Six-rayed hexagram, matching the six-pointed asterism seen in a
+      // real star sapphire — not a generic five-pointed star.
+      svg: (
+        <g fill="none" stroke="currentColor" strokeWidth="1.5">
+          <polygon points="12,3 19,16 5,16" />
+          <polygon points="12,21 5,8 19,8" />
+        </g>
+      ),
+    },
+    { key: 'octagon', label: 'Octagon', svg: <polygon points="8,3 16,3 21,8 21,16 16,21 8,21 3,16 3,8" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
+    { key: 'triangle', label: 'Triangle', svg: <polygon points="12,3 21,20 3,20" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
+    { key: 'heart', label: 'Heart', svg: <path d="M12 21s-8-5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 6-8 11-8 11z" fill="none" stroke="currentColor" strokeWidth="1.5" /> },
   ];
 
   return (

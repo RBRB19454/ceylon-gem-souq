@@ -3113,6 +3113,7 @@ input:checked + .slider-round:before {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: flex-start;
   gap: 1.25rem;
   box-sizing: border-box;
   background: transparent;
@@ -3472,8 +3473,8 @@ input:checked + .slider-round:before {
     background: rgba(2, 10, 22, 0.82);
   }
   .login-info-panel {
-    text-align: center;
-    align-items: center;
+    text-align: start;
+    align-items: flex-start;
     padding: 3rem 2rem 1.5rem;
   }
   .login-trust-strip {

@@ -3048,7 +3048,7 @@ input:checked + .slider-round:before {
   box-sizing: border-box;
   background-image: url('./assets/login_bg.jpg');
   background-size: cover;
-  background-position: calc(50% - 300px) bottom;
+  background-position: calc(50% - 300px) 72%;
   background-repeat: no-repeat;
 }
 

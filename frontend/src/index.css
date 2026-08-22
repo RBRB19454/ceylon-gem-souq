@@ -3079,6 +3079,10 @@ input:checked + .slider-round:before {
   margin: 0 !important;
 }
 
+.page-login footer {
+  margin-top: 0 !important;
+}
+
 /* Keep the grid content centered */
 .login-page-container .login-split-grid,
 .login-page-container .login-trust-strip {

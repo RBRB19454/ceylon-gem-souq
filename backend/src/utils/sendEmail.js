@@ -77,7 +77,36 @@ const sendVerificationApprovedEmail = async (user) => {
   }
 };
 
+// Send a password reset email to the user
+const sendPasswordResetEmail = async (user, resetUrl) => {
+  if (!resend) {
+    console.warn('RESEND_API_KEY not set — skipping password reset email.');
+    return;
+  }
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: user.email,
+    subject: 'Reset your Ceylon Gem Souq password',
+    html: `
+      <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+        <h2 style="color: #0B1E3D;">Password Reset Request</h2>
+        <p>Hi ${user.name},</p>
+        <p>We received a request to reset your Ceylon Gem Souq password. Click the button below to choose a new one — this link expires in 1 hour.</p>
+        <p style="text-align: center; margin: 2rem 0;">
+          <a href="${resetUrl}" style="background: #D4AF37; color: #0B1E3D; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Reset Password</a>
+        </p>
+        <p style="font-size: 0.85rem; color: #666;">If you didn't request this, you can safely ignore this email — your password will stay unchanged.</p>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 2rem 0;">
+        <p dir="rtl" style="text-align: right; font-size: 0.9rem;">
+          تلقينا طلباً لإعادة تعيين كلمة مرور حسابك في سوق أحجار سيلان الكريمة. إذا لم تطلب هذا، يمكنك تجاهل هذه الرسالة بأمان.
+        </p>
+      </div>
+    `,
+  });
+};
+
 module.exports = {
   notifyAdminsNewRegistration,
   sendVerificationApprovedEmail,
+  sendPasswordResetEmail,
 };

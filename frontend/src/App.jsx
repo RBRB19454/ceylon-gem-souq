@@ -15,6 +15,8 @@ import { useSettings } from './context/SettingsContext.jsx';
 import logo from './assets/logo.png';
 import Terms from './pages/Terms.jsx';
 import Certifications from './pages/Certifications.jsx';
+import ForgotPassword from './pages/ForgotPassword.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 
 export default function App() {
   const { toggleLanguage, t } = useLanguage();
@@ -59,6 +61,7 @@ export default function App() {
   const getPageClass = () => {
     if (location.pathname === '/') return 'page-home';
     if (location.pathname === '/listings') return 'page-listings';
+    if (location.pathname === '/login') return 'page-login';
     return 'page-standard';
   };
 
@@ -185,6 +188,8 @@ export default function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/certifications" element={<Certifications />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </main>
 

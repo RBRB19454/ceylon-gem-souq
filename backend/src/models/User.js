@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema(
     country: { type: String },
     preferredLanguage: { type: String, enum: ['en', 'ar'], default: 'en' },
     isVerified: { type: Boolean, default: false },
+    resetPasswordToken: { type: String, select: false },
+    resetPasswordExpires: { type: Date, select: false },
   },
   { timestamps: true }
 );

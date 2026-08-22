@@ -25,15 +25,8 @@ export default function About() {
 
   return (
     <div className="about-page-container">
-      {/* 1. Split Hero Section with Gem Discovery Lightbox & Topographic Contours */}
+      {/* 1. Split Hero Section with Gem Discovery Lightbox */}
       <section className="about-hero-grid">
-        {/* SVG Topographic background line path art */}
-        <svg className="about-grid-topo" viewBox="0 0 500 300" preserveAspectRatio="none">
-          <path d="M-50,150 C100,50 250,250 400,100 C500,0 550,150 600,100" fill="none" stroke="rgba(197, 168, 92, 0.09)" strokeWidth="1.5" />
-          <path d="M-50,180 C110,90 240,290 390,140 C490,40 540,190 600,140" fill="none" stroke="rgba(197, 168, 92, 0.05)" strokeWidth="1.5" />
-          <path d="M-50,120 C90,20 260,220 410,70 C510,-30 560,120 600,70" fill="none" stroke="rgba(197, 168, 92, 0.05)" strokeWidth="1.5" />
-        </svg>
-
         <div className="about-hero-copy">
           <span className="eyebrow">{t('about_eyebrow')}</span>
           <h1 className="about-hero-title">{t('about_title')}</h1>
@@ -55,9 +48,7 @@ export default function About() {
             <button onClick={handlePrev} className="about-discovery-nav prev" aria-label="Previous image">
               &#10094;
             </button>
-            <div className="about-discovery-img-frame">
-              <img src={images[lightboxIndex].src} alt={images[lightboxIndex].title} className="about-discovery-img" />
-            </div>
+            <img src={images[lightboxIndex].src} alt={images[lightboxIndex].title} className="about-discovery-img" />
             <button onClick={handleNext} className="about-discovery-nav next" aria-label="Next image">
               &#10095;
             </button>
@@ -76,23 +67,36 @@ export default function About() {
         </div>
       </section>
 
-      {/* 2. Who We Are Section (Realistic overlay cluster + details) */}
+      {/* 2. Who We Are Section */}
       <section className="about-who-we-are-section">
         <div className="about-who-we-are-left">
           <div className="about-gem-cluster-wrap">
-            <div className="about-gem-cluster-photos">
-              <div className="gem-photo-main-wrap">
-                <img src={aboutHeroSapphire} alt="Main Sapphire" className="gem-photo-main" />
-              </div>
-              <img src={aboutHeroSapphire} alt="Sapphire Left" className="gem-photo-sub-1" />
-              <img src={aboutHeroSapphire} alt="Sapphire Right" className="gem-photo-sub-2" />
-              <img src={aboutHeroSapphire} alt="Sapphire Bottom Left" className="gem-photo-sub-3" />
-              <img src={aboutHeroSapphire} alt="Sapphire Bottom Right" className="gem-photo-sub-4" />
-            </div>
+            <svg viewBox="0 0 300 200" width="100%" height="200" style={{ filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.3))' }}>
+              {/* Overlapping Ceylon sapphires */}
+              <g transform="translate(150, 95) scale(1.1)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="#0D47A1" stroke="#1E88E5" strokeWidth="2" />
+                <polygon points="0,-40 0,40 -35,-20 35,-20" fill="rgba(255,255,255,0.15)" />
+                <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="#1565C0" />
+              </g>
+              <g transform="translate(75, 105) scale(0.65)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="#1565C0" stroke="#42A5F5" strokeWidth="2" />
+                <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="#1E88E5" />
+              </g>
+              <g transform="translate(225, 105) scale(0.65)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="#1565C0" stroke="#42A5F5" strokeWidth="2" />
+                <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="#1E88E5" />
+              </g>
+              <g transform="translate(110, 140) scale(0.48)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="#1A237E" stroke="#3F51B5" strokeWidth="1.5" />
+              </g>
+              <g transform="translate(190, 140) scale(0.48)">
+                <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20" fill="#1A237E" stroke="#3F51B5" strokeWidth="1.5" />
+              </g>
+            </svg>
             
             {/* Curved text gold seal */}
             <div className="about-gold-seal">
-              <svg viewBox="0 0 100 100" width="85" height="85">
+              <svg viewBox="0 0 100 100" width="90" height="90">
                 <circle cx="50" cy="50" r="45" fill="var(--color-primary)" stroke="#C5A85C" strokeWidth="2" strokeDasharray="3, 3" />
                 <circle cx="50" cy="50" r="40" fill="none" stroke="#C5A85C" strokeWidth="1.5" />
                 <path id="curve" d="M 22,50 A 28,28 0 1,1 78,50" fill="none" stroke="none" />
@@ -121,106 +125,97 @@ export default function About() {
         </div>
       </section>
 
-      {/* 3. What Ceylon Gem Souq Is — and Isn't (Two Premium Cream Cards over Dark Contour Section) */}
-      <section className="about-comparison-section-wrapper">
-        {/* Topographic line paths behind cards */}
-        <svg className="about-comparison-topo" viewBox="0 0 800 400" preserveAspectRatio="none">
-          <path d="M-50,200 C150,100 350,350 550,150 C700,0 800,200 900,150" fill="none" stroke="rgba(197, 168, 92, 0.12)" strokeWidth="1.5" />
-          <path d="M-50,240 C170,140 330,390 530,190 C680,40 780,240 900,190" fill="none" stroke="rgba(197, 168, 92, 0.08)" strokeWidth="1.5" />
-          <path d="M-50,160 C130,60 370,310 570,110 C720,-40 820,160 900,110" fill="none" stroke="rgba(197, 168, 92, 0.08)" strokeWidth="1.5" />
-        </svg>
-
-        <div className="about-comparison-inner">
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <h3 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-title)', color: 'white', margin: 0 }}>
-              {t('about_what_title')}
-            </h3>
+      {/* 3. What Ceylon Gem Souq Is — and Isn't (Two Premium Cream Cards) */}
+      <section style={{ marginBottom: '4rem', position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <h3 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-title)', color: 'var(--color-primary)', margin: 0 }}>
+            {t('about_what_title')}
+          </h3>
+        </div>
+        <div className="about-comparison-grid">
+          <div className="about-comparison-card">
+            <h4 className="about-comparison-header positive">{t('about_we_are')}</h4>
+            <ul className="about-comparison-list">
+              <li>
+                <span className="icon-wrap positive">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                {t('we_are_item_1')}
+              </li>
+              <li>
+                <span className="icon-wrap positive">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                {t('we_are_item_2')}
+              </li>
+              <li>
+                <span className="icon-wrap positive">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                {t('we_are_item_3')}
+              </li>
+              <li>
+                <span className="icon-wrap positive">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                {t('we_are_item_4')}
+              </li>
+            </ul>
           </div>
-          <div className="about-comparison-grid">
-            <div className="about-comparison-card">
-              <h4 className="about-comparison-header positive">{t('about_we_are')}</h4>
-              <ul className="about-comparison-list">
-                <li>
-                  <span className="icon-wrap positive">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  {t('we_are_item_1')}
-                </li>
-                <li>
-                  <span className="icon-wrap positive">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  {t('we_are_item_2')}
-                </li>
-                <li>
-                  <span className="icon-wrap positive">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  {t('we_are_item_3')}
-                </li>
-                <li>
-                  <span className="icon-wrap positive">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  {t('we_are_item_4')}
-                </li>
-              </ul>
-            </div>
 
-            <div className="about-comparison-card">
-              <h4 className="about-comparison-header negative">{t('about_we_are_not')}</h4>
-              <ul className="about-comparison-list">
-                <li>
-                  <span className="icon-wrap negative">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  {t('we_are_not_item_1')}
-                </li>
-                <li>
-                  <span className="icon-wrap negative">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  {t('we_are_not_item_2')}
-                </li>
-                <li>
-                  <span className="icon-wrap negative">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  {t('we_are_not_item_3')}
-                </li>
-                <li>
-                  <span className="icon-wrap negative">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  {t('we_are_not_item_4')}
-                </li>
-              </ul>
-            </div>
+          <div className="about-comparison-card">
+            <h4 className="about-comparison-header negative">{t('about_we_are_not')}</h4>
+            <ul className="about-comparison-list">
+              <li>
+                <span className="icon-wrap negative">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </span>
+                {t('we_are_not_item_1')}
+              </li>
+              <li>
+                <span className="icon-wrap negative">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </span>
+                {t('we_are_not_item_2')}
+              </li>
+              <li>
+                <span className="icon-wrap negative">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </span>
+                {t('we_are_not_item_3')}
+              </li>
+              <li>
+                <span className="icon-wrap negative">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </span>
+                {t('we_are_not_item_4')}
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* 4. How It Works Timeline (Connected 4 nodes with gold wavy connector) */}
+      {/* 4. How It Works Timeline (Connected 4 nodes) */}
       <section className="about-timeline-section">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <span className="eyebrow" style={{ justifyContent: 'center', marginBottom: '0.75rem' }}>
@@ -234,10 +229,7 @@ export default function About() {
         </div>
 
         <div className="about-timeline-wrapper four-nodes">
-          {/* Custom SVG path representing the wavy gold connector from mockup */}
-          <svg className="about-timeline-wavy-path" viewBox="0 0 800 120" preserveAspectRatio="none">
-            <path d="M 100,50 Q 200,10 300,50 T 500,50 T 700,50" fill="none" stroke="#C5A85C" strokeWidth="2.5" strokeDasharray="6, 6" />
-          </svg>
+          <div className="about-timeline-connector" />
           
           <div className="about-timeline-step">
             <span className="about-timeline-number">01</span>
@@ -307,7 +299,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 5. Why Trust Matters Here Block with Vault/Safe Illustration */}
+      {/* 5. Why Trust Matters Here Block */}
       <section
         style={{
           background: '#F9F6F0',
@@ -342,7 +334,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 6. Accreditation Marquee (Navy Background Block) */}
+      {/* 6. Accreditation Marquee */}
       <section className="about-accreditation-section container-theme">
         <span className="eyebrow" style={{ color: '#C5A85C', justifyContent: 'center', marginBottom: '0.5rem' }}>
           {language === 'en' ? 'CERTIFICATION & TRUST' : 'الشهادات والتوثيق'}
@@ -370,7 +362,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 7. Platform Statistics Bar (Navy themed matching mockup) */}
+      {/* 7. Platform Statistics Bar */}
       <div className="about-stats-bar secondary-theme">
         <div className="about-stats-item">
           <span className="about-stats-number">{t('about_stats_value_num')}</span>

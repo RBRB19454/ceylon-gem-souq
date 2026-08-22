@@ -62,6 +62,7 @@ export default function App() {
     if (location.pathname === '/') return 'page-home';
     if (location.pathname === '/listings') return 'page-listings';
     if (location.pathname === '/login') return 'page-login';
+    if (location.pathname === '/contact') return 'page-contact';
     return 'page-standard';
   };
 

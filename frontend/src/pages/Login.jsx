@@ -188,13 +188,6 @@ export default function Login() {
                 </svg>
                 {t('auth_btn_google')}
               </button>
-
-              <button type="button" onClick={() => handleSocialLogin('Apple')} className="login-social-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ marginInlineEnd: '0.4rem' }}>
-                  <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-.7-.34-1.42-.51-2.14-.51-.73 0-1.47.17-2.17.51-1.07.49-2.07.45-3.05-.4C3.8 17.53 2.1 11.23 4.96 6.35c1.43-2.45 3.96-3.87 6.64-3.87.82 0 1.63.15 2.4.45.62.24 1.25.32 1.87.32.61 0 1.25-.08 1.86-.32.78-.3 1.58-.45 2.4-.45 2.68 0 5.21 1.42 6.64 3.87-4.14 2.5-3.48 8.4 1 10.15-.9 2.25-2.18 4.43-3.72 5.93zM15.97 2.13c1.1-1.33.95-3.13.95-3.13s-1.8.15-2.9 1.48c-1.12 1.35-.95 3.12-.95 3.12s1.8-.13 2.9-1.47z" />
-                </svg>
-                {t('auth_btn_apple')}
-              </button>
             </div>
 
             {/* Footer */}

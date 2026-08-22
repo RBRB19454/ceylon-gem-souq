@@ -3323,6 +3323,7 @@ input:checked + .slider-round:before {
   justify-content: center;
   transition: background 0.2s, border-color 0.2s;
   margin: 0;
+  position: relative;
 }
 
 .login-custom-checkbox:checked {
@@ -3331,12 +3332,15 @@ input:checked + .slider-round:before {
 }
 
 .login-custom-checkbox:checked::after {
-  content: '';
-  width: 4px;
-  height: 8px;
-  border: solid #061224;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg) translate(-0.5px, -1px);
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #061224;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .login-gradient-btn {
@@ -3392,7 +3396,7 @@ input:checked + .slider-round:before {
 
 .login-social-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   width: 100%;
   margin-top: 0.5rem;

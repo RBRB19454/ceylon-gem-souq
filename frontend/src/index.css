@@ -3196,8 +3196,12 @@ input:checked + .slider-round:before {
   border-radius: var(--radius-md);
   padding: 3.5rem 3rem;
   width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -3497,6 +3501,14 @@ input:checked + .slider-round:before {
 }
 
 @media (max-width: 640px) {
+  .login-page-container .login-split-grid,
+  .login-page-container .login-trust-strip {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .login-card-gold {
+    padding: 2.25rem 1.5rem !important;
+  }
   .login-trust-strip {
     grid-template-columns: 1fr;
     gap: 1.5rem;

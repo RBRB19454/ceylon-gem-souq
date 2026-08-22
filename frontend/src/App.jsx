@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import Services from './pages/Services.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Listings from './pages/Listings.jsx';
@@ -107,7 +108,14 @@ export default function App() {
               className={`nav-link ${isActive('/listings') ? 'active' : ''}`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('listings')}
+              {t('nav_collection_label')}
+            </Link>
+            <Link
+              to="/services"
+              className={`nav-link ${isActive('/services') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('nav_services_label')}
             </Link>
             <Link
               to="/contact"
@@ -184,6 +192,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/listings" element={<Listings />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/listings/:id" element={<GemDetail />} />
           <Route path="/owner" element={<OwnerDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
@@ -205,15 +214,7 @@ export default function App() {
               {t('hero_desc')}
             </p>
           </div>
-          <div>
-            <div className="footer-title">{t('footer_specialties_title')}</div>
-            <ul className="footer-links">
-              <li><Link to="/listings?gemType=sapphire">{t('filter_sapphire')}</Link></li>
-              <li><Link to="/listings?gemType=catseye">{t('filter_catseye')}</Link></li>
-              <li><Link to="/listings?gemType=spinel">{t('filter_spinel')}</Link></li>
-              <li><Link to="/listings?gemType=alexandrite">{t('filter_alexandrite')}</Link></li>
-            </ul>
-          </div>
+
           <div>
             <div className="footer-title">{t('footer_platform_title')}</div>
             <ul className="footer-links">
@@ -221,6 +222,18 @@ export default function App() {
               <li><Link to="/terms">{t('terms_nav')}</Link></li>
               <li><Link to="/certifications">{t('certs_nav')}</Link></li>
               <li><Link to="/contact">{t('footer_contact_link')}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="footer-title">{t('footer_certs_title')}</div>
+            <ul className="footer-links">
+              {['gia', 'grs', 'ssef', 'ngja'].map((lab) => (
+                <li key={lab}>
+                  <Link to="/certifications" title={t(`certs_lab_${lab}_desc`)}>
+                    {lab.toUpperCase()}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

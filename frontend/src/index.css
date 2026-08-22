@@ -3961,9 +3961,9 @@ input:checked + .slider-round:before {
 .contact-map-section {
   width: 100%;
   background-color: #020a16;
-  padding: 6rem 0;
   position: relative;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .contact-map-grid {
@@ -4076,6 +4076,109 @@ input:checked + .slider-round:before {
 .contact-map-btn:hover {
   background: var(--color-accent) !important;
   color: #020a16 !important;
+}
+
+/* Our Office section — text labels left, image bleeds full-height right */
+.contact-office-split {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  min-height: 500px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .contact-office-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+.contact-office-split-left {
+  padding: 6rem 3rem 6rem 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .contact-office-split-left {
+    padding: 5rem 2.5rem 5rem 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-office-split-left {
+    padding: 4rem 1.5rem;
+  }
+}
+
+.contact-office-split h2 {
+  color: white;
+  font-size: 1.9rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+}
+
+.contact-office-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-office-row-label {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  width: 42px;
+  padding-top: 0.15rem;
+}
+
+.contact-office-row-details p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.92rem;
+  margin: 0 0 0.2rem;
+}
+
+.contact-office-row-details a {
+  color: white;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-office-row-details a:hover {
+  color: var(--color-accent);
+}
+
+/* Right panel: image bleeds edge-to-edge, fills full height of section */
+.contact-office-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-office-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.contact-office-image-wrap .contact-map-btn {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(2, 10, 22, 0.88) !important;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(197, 168, 92, 0.4) !important;
 }
 
 /* Premium World Map SVG Styles */
